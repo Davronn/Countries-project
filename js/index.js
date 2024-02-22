@@ -56,7 +56,13 @@ function fetchCard(data) {
             <img src="${el?.flags?.png}" alt="${el.name?.commo}" />
           </div>
           <div class="card_item">
-            <h3>${el.name?.common}</h3>
+            <h3 style="font-family: Nunito Sans;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 26px;
+            letter-spacing: 0px;
+            text-align: left;
+            ">${el.name?.common}</h3>
             <p>Population: <span>${el?.population}</span></p> 
             <p>Region: <span>${el?.region}</span></p> 
             <p>Capital: <span>${!el.capital ? "" : el?.capital}</span></p> 
@@ -66,43 +72,6 @@ function fetchCard(data) {
   countres.innerHTML = ui;
 }
 
-let btns = document.querySelector(".btns");
-
-const fetchBtn = (data) => {
-  let ui = "";
-  const numberOfPages = Math.ceil(data?.length / 16);
-  for (let index = 1; index <= numberOfPages; index++) {
-    ui += `<button class="btn ${
-      index === 1 ? "active" : ""
-    }" onclick="pagination(${index})">${index}</button>`;
-  }
-  btns.innerHTML = ui;
-
-  let btn = document.querySelectorAll(".btn");
-  btn.forEach((element) => {
-    element.addEventListener("click", function () {
-      btn.forEach((item) => {
-        item.classList.remove("active");
-      });
-      this.classList.add("active");
-    });
-  });
-};
-
-async function pagination(id) {
-  try {
-    const result = await fetch(api);
-    const data = await result.json();
-    const Max = Math.ceil(data?.data?.length / 16);
-    if (id >= 1 && id <= Max) {
-      countMis = (id - 1) * 16;
-      countMus = countMis + 16;
-      fetchCard(data?.data);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 // region
 
@@ -191,3 +160,88 @@ function Search(data) {
     fetchBtn(searchData);
   });
 }
+
+
+
+
+let btns = document.querySelector(".btns");
+let nextBtn = document.querySelector(".right_btn");
+let backBtn = document.querySelector(".left_btn");
+let searchInput = document.querySelector("#search_input");
+let currentPage = 1; // Initialize currentPage to 1
+
+const fetchBtn = (data) => {
+  let ui = "";
+  const numberOfPages = Math.ceil(data?.length / 16);
+  for (let index = 1; index <= numberOfPages; index++) {
+    ui += `
+    <button class="btn ${
+      index === currentPage ? "active" : ""
+    }" onclick="pagination(${index})">${index}</button>`;
+  }
+  btns.innerHTML = ui;
+
+  let btn = document.querySelectorAll(".btn");
+  btn.forEach((element) => {
+    element.addEventListener("click", function () {
+      btn.forEach((item) => {
+        item.classList.remove("active");
+      });
+      this.classList.add("active");
+    });
+  });
+};
+
+async function pagination(id) {
+  try {
+    const result = await fetch(api);
+    const data = await result.json();
+    const Max = Math.ceil(data?.data?.length / 16);
+    if (id >= 1 && id <= Max) {
+      currentPage = id; // Update currentPage
+      countMis = (id - 1) * 16;
+      countMus = countMis + 16;
+      fetchCard(data?.data);
+      fetchBtn(data?.data); // Update buttons
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Function to handle next button click
+nextBtn.addEventListener("click", async () => {
+  try {
+    const result = await fetch(api);
+    const data = await result.json();
+    const Max = Math.ceil(data?.data?.length / 16);
+    if (currentPage < Max) {
+      currentPage++; // Increment currentPage
+      pagination(currentPage); // Fetch and display data for the next page
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Function to handle back button click
+backBtn.addEventListener("click", async () => {
+  if (currentPage > 1) {
+    currentPage--; // Decrement currentPage
+    pagination(currentPage); // Fetch and display data for the previous page
+  }
+});
+
+// Function to handle search input
+searchInput.addEventListener("keyup", async (event) => {
+  if (event.key === "Enter") {
+    const searchTerm = searchInput.value.trim();
+    // Perform search operation using the searchTerm
+    // Update data and pagination accordingly
+  }
+});
+
+// Initial fetch and display of data
+fetchBtn(api);
+pagination(currentPage);
+

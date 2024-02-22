@@ -16,33 +16,6 @@
   --loading: rgb(245, 247, 250);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-}
-
-body {
-  background-color: var(--body);
-  transition: 0.3s;
-}
-
-.container {
-  width: 1280px;
-  height: 80px;
-  margin: 0 auto;
-  font-family: Roboto;
-}
-
-@media screen and (max-width: 1300px) {
-  .container {
-    width: 95%;
-  }
-}
 header {
   width: 100%;
   height: 90px;
@@ -59,6 +32,7 @@ header .container .header_item {
   height: 100%;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
 }
 header .container .header_item h1 {
   transition: 0.3s;
@@ -130,7 +104,7 @@ header .container .header_item .clors {
   display: flex;
   align-items: center;
   cursor: pointer;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.201);
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.29);
   background-color: var(--header);
 }
 .countyD .container .back span svg {
@@ -201,6 +175,7 @@ header .container .header_item .clors {
   color: var(--text);
   cursor: pointer;
   margin-bottom: 10px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 800px) {
@@ -272,8 +247,13 @@ main .container .main_top .search input {
   transition: 0.3s;
   font-size: 20px;
   background-color: var(--header);
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.066);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
   color: var(--text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
 }
 main .container .main_top .search ::-moz-placeholder {
   color: var(--svg);
@@ -297,7 +277,7 @@ main .container .main_top .filter .region {
   transition: 0.3s;
   font-size: 20px;
   background-color: var(--header);
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.066);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
   margin-right: 30px;
   padding-left: 10px;
   display: block;
@@ -313,7 +293,7 @@ main .container .main_top .filter .region1 {
   transition: 0.3s;
   font-size: 20px;
   background-color: var(--header);
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.066);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
   color: var(--text);
 }
 main .container .main_top .filter option {
@@ -321,6 +301,7 @@ main .container .main_top .filter option {
   outline: none;
   transition: 0.3s;
   color: var(--text);
+  padding-right: 20px;
 }
 main .container .countres {
   width: 100%;
@@ -330,7 +311,7 @@ main .container .countres {
   padding-bottom: 50px;
 }
 main .container .countres .card {
-  width: 280px;
+  width: 264px;
   height: 336px;
   border-radius: 8px;
   background-color: var(--header);
@@ -339,6 +320,7 @@ main .container .countres .card {
   position: relative;
   overflow: hidden;
   margin-top: 40px;
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
 }
 main .container .countres .card .card_img {
   width: 100%;
@@ -365,44 +347,67 @@ main .container .countres .card .card_item p {
   padding-top: 10px;
   color: var(--text);
   transition: 0.3s;
+  font-family: Nunito Sans;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
 }
 main .container .countres .card .card_item p span {
   transition: 0.3s;
-  color: var(--span);
+  font-family: Nunito Sans;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
 }
 main .container .pagination {
   width: 100%;
   margin: 0 auto;
   height: 30px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
+}
+main .container .pagination .pag_btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .container .pagination .pag_btns .left_btn, main .container .pagination .pag_btns .right_btn {
+  cursor: pointer;
+  margin-bottom: 7px;
 }
 main .container .pagination .btns {
   width: 100%;
   height: 80px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 main .container .pagination .btns button {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 30px;
   background-color: var(--header);
-  font-size: 16px;
-  border-radius: 5px;
+  font-size: 12px;
+  border-radius: 12px;
   outline: none;
   border: none;
   cursor: pointer;
   color: var(--text);
-  border: 1px solid rgb(38, 100, 235);
+  border: 1px solid rgb(117, 120, 125);
   transition: 0.3s;
   margin-left: 5px;
+  margin-bottom: 10px;
 }
 main .container .pagination .btns button:hover {
-  background-color: rgb(38, 100, 235);
+  background-color: rgb(117, 120, 125);
   color: white;
 }
 main .container .pagination .btns .btn.active {
-  background-color: rgb(38, 100, 235);
+  background-color: rgb(117, 120, 125);
   color: white;
 }
 
@@ -416,6 +421,15 @@ main .container .pagination .btns .btn.active {
   transform: rotate(5deg);
   filter: blur(80px);
   animation: 1s loading infinite linear;
+}
+
+.left_btn, .right_btn {
+  width: 40px;
+  height: 40px;
+}
+.left_btn img, .right_btn img {
+  width: 40px;
+  height: 40px;
 }
 
 @keyframes loading {
@@ -481,7 +495,41 @@ main .container .pagination .btns .btn.active {
   main .container .countres .card {
     width: 95%;
   }
+  main .container .filter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
   main .container .pagination .btns .btn:nth-last-child(-n+6) {
     display: none;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Nunito Sans;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--body);
+  transition: 0.3s;
+}
+
+.container {
+  width: 1280px;
+  height: 80px;
+  margin: 0 auto;
+  font-family: Roboto;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    width: 95%;
   }
 }/*# sourceMappingURL=global.css.map */

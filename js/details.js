@@ -1,3 +1,4 @@
+console.log("hello")
 const detailes_item = document.querySelector(".detailes_item");
 let loading_product = document.getElementById("loading_product");
 const common = new URLSearchParams(window.location.search).get("common");
@@ -11,12 +12,7 @@ const fetchData = async (api) => {
   } catch (error) {
     console.log(error);
   } finally {
-    setTimeout(() => {
-      loading_product.style.opacity = "0";
-    }, 500);
-    setTimeout(() => {
-      loading_product.style.display = "none";
-    }, 700);
+    
   }
 };
 fetchData(api);
@@ -38,20 +34,20 @@ function displayData(data) {
             <h2> ${el?.name?.common}</h2>
             <div class="left">
               <div>
-                <p>Native Name: ${el?.name?.common}</p>
-                <p>Population: ${el?.population}</p>
-                <p>Region: ${el?.region}</p>
-                <p>Sub Region:${el?.subregion}</p>
-                <p>Capital: ${el?.capital}</p>
+                <p><b>Native Name</b>: ${el?.name?.common}</p>
+                <p><b>Population</b>: ${el?.population}</p>
+                <p><b>Region</b>: ${el?.region}</p>
+                <p><b>Sub Region</b>:${el?.subregion}</p>
+                <p><b>Capital</b>: ${el?.capital}</p>
               </div>
               <div>
-                <p>Top Level Domain: ${el?.ccn3}</p>
-                <p>Currencies: ${currencyValues?.map((el) => el?.name)}</p>
-                  <p>Languages: ${obj?.map((el) => el)} </p>
+                <p><b>Top Level Domain</b>: ${el?.ccn3}</p>
+                <p><b>Currencies</b>: ${currencyValues?.map((el) => el?.name)}</p>
+                  <p><b>Languages</b>: ${obj?.map((el) => el)} </p>
               </div>
             </div>
             <div class="right">
-              <p>Border Countries:</p>
+              <p><b>Border Countries:</b></p>
               ${
                 !el?.borders
                   ? ""
